@@ -1,11 +1,6 @@
 $PATHS = @(
     "C:/Windows",
-    "C:/Windows/System32",
-    "S:/Software/Storage/VPKEdit-Windows-Standalone-CLI-msvc-Release",
-    "S:/Software/Storage/FFmpeg/bin",
-    "S:/Software/Storage/4gb_patch",
-    "S:/Software/Shell",
-    "T:/SteamLibrary/steamapps/common/Left 4 Dead 2/bin"
+    "C:/Windows/System32"
 )
 
 function Start-ProgramProxy {
