@@ -2,7 +2,7 @@ $PATHS = @(
     "C:/Windows",
     "C:/Windows/System32",
     "S:/Software/Storage/VPKEdit-Windows-Standalone-CLI-msvc-Release",
-    "S:/Software/Storage/ffmpeg-2024-07-24-git-896c22ef00-full_build/bin",
+    "S:/Software/Storage/FFmpeg/bin",
     "S:/Software/Storage/4gb_patch",
     "S:/Software/Shell",
     "T:/SteamLibrary/steamapps/common/Left 4 Dead 2/bin"
@@ -18,7 +18,8 @@ function Start-ProgramProxy {
     $targetProgramName = $args[0]
     $targetProgramArgs = $args[1..($args.Length)]
 
-    foreach ($path in $PATHS) {
+    $validPaths = $PATHS | Get-Unique | Where-Object { Test-Path $_ -PathType Container } 
+    foreach ($path in $validPaths) {
         $targetFile = (Get-ChildItem -File $path
             | Where-Object { $_.Name -ieq "$($targetProgramName).exe" }
             | Select-Object -First 1)?[0] ?? $null
